@@ -8,7 +8,7 @@ class Lesson < ActiveRecord::Base
 
   after_create :marking, :learned_activity, :learned_words_count
 
-  accepts_nested_attributes_for :lessons_words, allow_destroy: true
+  accepts_nested_attributes_for :lessons_words, allow_destroy: true, reject_if: :all_blank
 
   def learned_words_count
     category.words.learned(user).count
