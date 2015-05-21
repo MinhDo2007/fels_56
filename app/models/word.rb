@@ -6,7 +6,7 @@ class Word < ActiveRecord::Base
 
   validates :content, presence: true, length: {minimum: 2, maximum: 20}
 
-  accepts_nested_attributes_for :answers, allow_destroy: true
+  accepts_nested_attributes_for :answers, allow_destroy: true, reject_if: :all_blank
 
   scope :learned, ->user{where("words.id IN (SELECT word_id FROM lessons_words, lessons
                                        WHERE lessons.user_id = #{user.id} AND lessons.id = lessons_words.lesson_id)")}

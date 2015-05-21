@@ -3,6 +3,8 @@
   <td><%= f.text_field :content, class: "form-control" %></td>
   <td class="col-md-1">
     <%= f.check_box :correct %>
-    <%= link_to_remove_fields t(:remove), f %>
+    <%= f.label t(:correct) %>
+    <%= f.check_box :_destroy %>
+    <%= f.label :_destroy, t(:remove) %>
   </td>
 </tr>
